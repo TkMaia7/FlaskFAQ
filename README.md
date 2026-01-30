@@ -72,7 +72,7 @@ flask populate-db
 ```bash
 flask run
 ```
-2. Acesse no navegador: [http://127.0.0.1:5000/](https://www.google.com/search?q=http://127.0.0.1:5000/)
+2. Acesse no navegador: http://127.0.0.1:5000/
 
 ---
 
@@ -84,3 +84,4 @@ flask run
 * `models.py`: Modelos do Banco de Dados.
 * `cli.py`: Comandos personalizados de terminal.
 * `instance/`: Onde o banco de dados SQLite (`flask.db`) é salvo.
+
