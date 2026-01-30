@@ -13,23 +13,32 @@ def drop_db():
     click.echo("Banco de dados apagado.")
     
 def populate_db():
-    """Insere as perguntas iniciais no banco."""
     faqs = [
-        Faq(pergunta='O que configura o impedimento?', resposta='Um jogador está em posição de impedimento se estiver mais próximo da linha de meta adversária do que a bola e o penúltimo adversário no momento em que a bola é tocada por um companheiro de equipe.'),
-        Faq(pergunta='Quando o VAR pode ser acionado?', resposta='O Árbitro de Vídeo (VAR) só pode intervir em quatro situações de "erro claro e óbvio": validação de gols (se houve falta ou impedimento), marcação de pênaltis, cartões vermelhos diretos e confusão de identidade de jogadores.'),
-        Faq(pergunta='É possível fazer um gol direto de arremesso lateral?', resposta='Não. Segundo a regra, não é válido um gol marcado diretamente de um arremesso lateral. Se a bola entrar no gol adversário sem tocar em ninguém, é marcado tiro de meta; se entrar no próprio gol, é escanteio.'),
-        Faq(pergunta='Quantas substituições são permitidas em uma partida oficial?', resposta='Atualmente, a regra geral da FIFA permite até 5 substituições por equipe, que devem ser realizadas em no máximo três paradas durante o jogo (o intervalo não conta como parada).'),
-        Faq(pergunta='Qual a diferença entre tiro livre direto e indireto?', resposta='No tiro livre direto, o gol pode ser validado se a bola entrar direto na meta. No tiro livre indireto (geralmente marcado por jogo perigoso ou recuo para o goleiro), a bola precisa tocar em outro jogador antes de entrar no gol.'),
-        Faq(pergunta='O goleiro pode pegar a bola com a mão se receber um recuo?', resposta='Não se o recuo for feito intencionalmente com os pés por um companheiro de equipe. Se o recuo for de cabeça, peito ou coxa, o goleiro pode usar as mãos. Se usar as mãos num recuo com o pé, é marcado tiro livre indireto.'),
-        Faq(pergunta='Qual a duração regulamentar de uma partida?', resposta='Uma partida oficial consiste em dois tempos de 45 minutos cada, totalizando 90 minutos, mais os acréscimos determinados pelo árbitro para compensar o tempo perdido.'),
-        Faq(pergunta='O que acontece se um jogador receber dois cartões amarelos?', resposta='Se um jogador receber o segundo cartão amarelo na mesma partida, ele receberá automaticamente um cartão vermelho e será expulso do campo, não podendo ser substituído.'),
-        Faq(pergunta='Qual a distância oficial da marca do pênalti?', resposta='A marca da penalidade máxima fica localizada a exatos 11 metros (ou 12 jardas) do centro da linha do gol, equidistante das traves.'),
-        Faq(pergunta='Qual o número mínimo de jogadores para uma partida acontecer?', resposta='Uma partida não pode começar ou continuar se qualquer uma das equipes tiver menos de 7 jogadores em campo (incluindo o goleiro).')
+        Faq(pergunta='O que é o Flask?', resposta='Flask é um micro-framework web escrito em Python. É chamado de "micro" porque não exige ferramentas ou bibliotecas específicas, mantendo um núcleo simples, mas extensível.'),
+        Faq(pergunta='Qual a diferença entre Flask e Django?', resposta='O Django é "full-stack" (baterias inclusas), vindo com ORM e Admin prontos. O Flask é minimalista, permitindo que o desenvolvedor escolha suas próprias ferramentas (banco de dados, autenticação, etc).'),
+        Faq(pergunta='O que é uma Rota (Route)?', resposta='Rotas são o mapeamento entre uma URL (ex: /contato) e uma função Python. Usa-se o decorador @app.route para definir o que acontece quando o usuário acessa aquele endereço.'),
+        Faq(pergunta='O que é o Jinja2?', resposta='É o motor de templates padrão do Flask. Ele permite misturar lógica Python (loops, variáveis) dentro de arquivos HTML para gerar páginas dinâmicas.'),
+        Faq(pergunta='Como exibo uma variável no HTML com Jinja2?', resposta='Utiliza-se chaves duplas. Por exemplo: {{ nome_do_usuario }} irá imprimir o valor da variável na tela.'),
+        Faq(pergunta='Para que serve a função url_for()?', resposta='Ela gera URLs dinamicamente baseada no nome da função da rota. É preferível usar url_for("index") do que escrever "/" manualmente, facilitando mudanças futuras.'),
+        Faq(pergunta='O que é a pasta "static"?', resposta='É o diretório onde o Flask procura por arquivos estáticos que não mudam, como folhas de estilo CSS, arquivos JavaScript e imagens.'),
+        Faq(pergunta='O que é a pasta "templates"?', resposta='É onde ficam os arquivos HTML que contêm a estrutura da página e a lógica do Jinja2. O Flask busca arquivos aqui automaticamente ao usar render_template().'),
+        Faq(pergunta='Como acessar dados enviados por um formulário (POST)?', resposta='Através do objeto "request". Usa-se request.form["nome_do_campo"] para pegar os dados enviados via método POST.'),
+        Faq(pergunta='O que são Blueprints?', resposta='Blueprints permitem dividir a aplicação em componentes menores e reutilizáveis (módulos). Isso é essencial para organizar projetos grandes, separando Admin, API e Site Público, por exemplo.'),
+        Faq(pergunta='O que é o Flask-SQLAlchemy?', resposta='É uma extensão que facilita o uso do SQLAlchemy (um ORM) dentro do Flask, permitindo manipular bancos de dados usando classes e objetos Python em vez de SQL puro.'),
+        Faq(pergunta='O que é o padrão Application Factory?', resposta='É a prática de criar a aplicação dentro de uma função (def create_app). Isso permite criar múltiplas instâncias do app com configurações diferentes, facilitando testes automatizados.'),
+        Faq(pergunta='O que é WSGI?', resposta='Web Server Gateway Interface. É o protocolo padrão que permite que servidores web (como Nginx ou Apache) conversem com aplicações Python (como o Flask). O Werkzeug é a biblioteca WSGI do Flask.'),
+        Faq(pergunta='Para que serve o objeto "session"?', resposta='A session permite armazenar informações específicas de um usuário de uma requisição para outra. No Flask, isso é gravado em cookies assinados criptograficamente.'),
+        Faq(pergunta='O que é o Flask-WTF?', resposta='É uma extensão que integra o WTForms ao Flask. Ela facilita a criação, validação e proteção de formulários HTML, incluindo proteção contra CSRF.'),
+        Faq(pergunta='O que é CSRF e como o Flask protege contra isso?', resposta='CSRF (Cross-Site Request Forgery) é um ataque onde um site malicioso engana o navegador. O Flask-WTF previne isso exigindo um token secreto único em cada formulário enviado.'),
+        Faq(pergunta='O que é o objeto "g"?', resposta='O "g" é um objeto global para armazenamento temporário. Ele serve para guardar dados durante uma única requisição (ex: usuário logado, conexão de banco) e é descartado ao final dela.'),
+        Faq(pergunta='Qual a diferença entre servidor de desenvolvimento e produção?', resposta='O servidor embutido do Flask (`flask run`) é para testes e debug. Em produção, deve-se usar um servidor WSGI robusto como Gunicorn ou uWSGI para aguentar tráfego real.'),
+        Faq(pergunta='Como lidar com erros 404 (Página não encontrada)?', resposta='Usa-se o decorador @app.errorhandler(404). Isso permite criar uma função que retorna uma página HTML personalizada sempre que o usuário acessar uma rota inexistente.'),
+        Faq(pergunta='O que são "Contexts" no Flask?', resposta='Existem dois principais: o "Application Context" (configurações do app) e o "Request Context" (dados da requisição atual). O Flask gerencia isso magicamente para que `request` e `current_app` estejam sempre disponíveis.')
     ]
     
     db.session.add_all(faqs)
     db.session.commit()
-    click.echo("Banco de dados populado com sucesso!")
+    click.echo("Banco atualizado com 20 perguntas sobre Flask!")
 
 def init_app(app):
     """Registra os comandos no Flask."""

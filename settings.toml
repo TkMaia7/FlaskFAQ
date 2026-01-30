@@ -1,6 +1,6 @@
 [default]
 FLASK_ADMIN_TEMPLATE_MODE = "bootstrap3"
-TITLE = "FAQ - Perguntas Frequentes"
+TITLE = "FlaskFAQ"
 SECRET_KEY = "54d08d8e-2107-496e-9a4b-451dc9905d6e"
 
 [development]

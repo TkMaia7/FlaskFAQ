@@ -24,7 +24,7 @@ def init_app(app):
     
     admin.init_app(app, index_view=ProtectedIndexView())
     
-    admin.name = "FAQ Futebol"
+    admin.name = "FlaskFAQ Admin"
     admin.template_mode = "bootstrap3"
     admin.base_template = 'admin/custom_master.html'
     
