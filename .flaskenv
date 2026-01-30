@@ -1,0 +1,2 @@
+FLASK_APP=flask_faq
+FLASK_DEBUG=1

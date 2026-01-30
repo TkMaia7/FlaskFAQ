@@ -1,0 +1,10 @@
+[default]
+FLASK_ADMIN_TEMPLATE_MODE = "bootstrap3"
+TITLE = "FAQ - Perguntas Frequentes"
+
+[development]
+SQLALCHEMY_DATABASE_URI = "sqlite:///flask.db"
+FLASK_ADMIN_NAME = "Admin FAQ (Dev)"
+
+[production]
+SESSION_COOKIE_DOMAIN = true
