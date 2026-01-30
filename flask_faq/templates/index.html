@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
+        
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="text-center mb-4 text-primary fw-bold">Perguntas Frequentes</h2>
+                
+                {% if faqs %}
+                    <div class="accordion" id="faqAccordion">
+                        {% for faq in faqs %}
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading{{ faq.id }}">
+                                    <button class="accordion-button collapsed" type="button" 
+                                            data-bs-toggle="collapse" 
+                                            data-bs-target="#collapse{{ faq.id }}" 
+                                            aria-expanded="false" 
+                                            aria-controls="collapse{{ faq.id }}">
+                                        <strong>{{ loop.index }}. {{ faq.pergunta }}</strong>
+                                    </button>
+                                </h2>
+                                <div id="collapse{{ faq.id }}" 
+                                     class="accordion-collapse collapse" 
+                                     aria-labelledby="heading{{ faq.id }}" 
+                                     data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body text-secondary" style="font-size: 1.05rem; line-height: 1.6;">
+                                        {{ faq.resposta }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning text-center">
+                        Nenhuma pergunta encontrada no banco de dados.
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
